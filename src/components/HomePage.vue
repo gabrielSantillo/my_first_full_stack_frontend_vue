@@ -1,11 +1,13 @@
 <template>
     <div>
-        <h1>HIII</h1>
+        <display-candys></display-candys>
     </div>
 </template>
 
 <script>
+import DisplayCandys from './display-candys/DisplayCandys.vue'
     export default {
+  components: { DisplayCandys },
         
     }
 </script>
