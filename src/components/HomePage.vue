@@ -12,6 +12,6 @@ import DisplayCandys from './display-candys/DisplayCandys.vue'
     }
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 
 </style>
