@@ -6,6 +6,7 @@
     <button @click="handle_submit">Submit</button>
     <div v-if="candy_inserted">
         <p>Candy inserted</p>
+        <p>Please, refresh the page</p>
     </div>
   </div>
 </template>

@@ -1,11 +1,15 @@
 <template>
-  <div>
+  <div class="container">
+    <div v-if="candy_deleted" class="candy_deleted_container">
+      <p>Candy deleted</p>
+      <p>Please, refresh the page</p>
+    </div>
     <div class="candys_container">
       <section v-for="candy in candys" :key="candy[`id`]">
         <h1>{{ candy[0] }}</h1>
         <img :src="candy[1]" class="image" />
         <p>{{ candy[2] }}</p>
-        <button>Delete</button>
+        <button @click="handle_delete(candy, $event)">Delete</button>
       </section>
     </div>
   </div>
@@ -14,9 +18,30 @@
 <script>
 import axios from "axios";
 export default {
+  methods: {
+    handle_delete(candy) {
+      axios
+        .request({
+          url: `http://127.0.0.1:5000/api/candy`,
+          method: `DELETE`,
+          data: {
+            candy_id: candy[3],
+          },
+        })
+        .then((success) => {
+          success;
+          this.candy_deleted = true;
+        })
+        .catch((error) => {
+          error;
+        });
+      candy;
+    },
+  },
   data() {
     return {
       candys: [],
+      candy_deleted: false,
     };
   },
   mounted() {
@@ -68,5 +93,20 @@ button:hover {
 
 button:active {
   scale: 95%;
+}
+
+.candy_deleted_container {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: rgb(2, 179, 137);
+    border: 2px solid black;
+    border-radius: 5px;
+    width: 250px;
+    justify-self: center;
+    text-align: center;
+}
+
+.container {
+    display: grid;
 }
 </style>
