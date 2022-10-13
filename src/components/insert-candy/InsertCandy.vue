@@ -1,43 +1,51 @@
 <template>
   <div>
-    <input type="text" placeholder="Candy name" ref="name"/>
-    <input type="text" placeholder="Candy image url" ref="image_url"/>
-    <input type="text" placeholder="Candy description" ref="description"/>
+    <input type="text" placeholder="Candy name" ref="name" />
+    <input type="text" placeholder="Candy image url" ref="image_url" />
+    <input type="text" placeholder="Candy description" ref="description" />
     <button @click="handle_submit">Submit</button>
     <div v-if="candy_inserted">
-        <p>Candy inserted</p>
-        <p>Please, refresh the page</p>
+      <p>Candy inserted</p>
+      <p>Please, refresh the page</p>
     </div>
   </div>
 </template>
 
 <script>
-import axios from "axios"
+import axios from "axios";
 export default {
-
-    data() {
-        return {
-            candy_inserted: false
-        }
+  /* setting data to be used in the request */
+  data() {
+    return {
+      candy_inserted: false,
+    };
+  },
+  /* making a post request to insert a new candy */
+  methods: {
+    handle_submit() {
+      axios
+        .request({
+          url: `http://127.0.0.1:5000/api/candy`,
+          method: `POST`,
+          /* data being sent */
+          data: {
+            name: this.$refs[`name`][`value`],
+            image_url: this.$refs[`image_url`][`value`],
+            description: this.$refs[`description`][`value`],
+          },
+        })
+        /* on success set the variable candy_inserted to true */
+        .then((response) => {
+          response;
+          this.candy_inserted = true;
+        })
+        /* on failure show a message to the user */
+        .catch((error) => {
+          error;
+          alert("Sorry, an error occurred");
+        });
     },
-    methods: {
-        handle_submit() {
-            axios.request({
-                url: `http://127.0.0.1:5000/api/candy`,
-                method: `POST`,
-                data: {
-                    name: this.$refs[`name`][`value`],
-                    image_url: this.$refs[`image_url`][`value`],
-                    description: this.$refs[`description`][`value`]
-                }
-            }).then((response) => {
-                response
-                this.candy_inserted = true
-            }).catch((error) => {
-                error
-            })
-        }
-    },
+  },
 };
 </script>
 

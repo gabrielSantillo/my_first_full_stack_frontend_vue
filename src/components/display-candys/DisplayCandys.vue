@@ -18,8 +18,10 @@
 <script>
 import axios from "axios";
 export default {
+  /* function that will delete the candy */
   methods: {
     handle_delete(candy) {
+      /* making a axios request to delete the candy based on its id */
       axios
         .request({
           url: `http://127.0.0.1:5000/api/candy`,
@@ -28,32 +30,40 @@ export default {
             candy_id: candy[3],
           },
         })
+        /* on success, turn the candy_deleted variable to true */
         .then((success) => {
           success;
           this.candy_deleted = true;
         })
+        /* on failure show a message to the user */
         .catch((error) => {
           error;
+          alert("Sorry, an error occurred");
         });
       candy;
     },
   },
+  /* setting datas to be used in the requests */
   data() {
     return {
       candys: [],
       candy_deleted: false,
     };
   },
+  /* on mounted making a request to get all candy in the db */
   mounted() {
     axios
       .request({
         url: `http://127.0.0.1:5000/api/candy`,
       })
+      /* on success storing the response data in the candys empty array */
       .then((response) => {
         this.candys = response[`data`];
       })
+      /* on failure show a message to the user */
       .catch((error) => {
         error;
+        alert("Sorry, an error occurred");
       });
   },
 };
@@ -96,17 +106,17 @@ button:active {
 }
 
 .candy_deleted_container {
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: rgb(2, 179, 137);
-    border: 2px solid black;
-    border-radius: 5px;
-    width: 250px;
-    justify-self: center;
-    text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: rgb(2, 179, 137);
+  border: 2px solid black;
+  border-radius: 5px;
+  width: 250px;
+  justify-self: center;
+  text-align: center;
 }
 
 .container {
-    display: grid;
+  display: grid;
 }
 </style>
