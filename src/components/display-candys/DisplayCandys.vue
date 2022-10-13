@@ -5,7 +5,7 @@
         <h1>{{ candy[0] }}</h1>
         <img :src="candy[1]" class="image" />
         <p>{{ candy[2] }}</p>
-        <button :id="candy[3]">Delete</button>
+        <button>Delete</button>
       </section>
     </div>
   </div>
@@ -47,5 +47,26 @@ img {
   height: 250px;
   object-fit: cover;
   border-radius: 5px;
+}
+
+button {
+  width: 70px;
+  height: 25px;
+  justify-self: center;
+  margin-top: 15px;
+  border: none;
+  background-color: rgb(219, 87, 87);
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: rgb(210, 106, 106);
+}
+
+button:active {
+  scale: 95%;
 }
 </style>
