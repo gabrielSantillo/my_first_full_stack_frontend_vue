@@ -23,6 +23,14 @@ export default {
   /* making a post request to insert a new candy */
   methods: {
     handle_submit() {
+      if (
+        this.$refs[`name`][`value`] == "" ||
+        this.$refs[`image_url`][`value`] == "" ||
+        this.$refs[`description`][`value`] == ""
+      ) {
+        alert("All inputs must be filled.");
+        return;
+      }
       axios
         .request({
           url: `http://127.0.0.1:5000/api/candy`,
