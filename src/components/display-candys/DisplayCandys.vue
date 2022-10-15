@@ -9,7 +9,7 @@
         <h1>{{ candy[0] }}</h1>
         <img :src="candy[1]" class="image" />
         <p>{{ candy[2] }}</p>
-        <button @click="handle_delete(candy, $event)">Delete</button>
+        <button @click="handle_delete(candy)">Delete</button>
       </section>
     </div>
   </div>
