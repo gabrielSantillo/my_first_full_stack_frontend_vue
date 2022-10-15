@@ -5,7 +5,7 @@
       <p>Please, refresh the page</p>
     </div>
     <div class="candys_container">
-      <section v-for="candy in candys" :key="candy[`id`]">
+      <section v-for="candy in candys" :key="candy[3]">
         <h1>{{ candy[0] }}</h1>
         <img :src="candy[1]" class="image" />
         <p>{{ candy[2] }}</p>
