@@ -24,7 +24,7 @@ export default {
       /* making a axios request to delete the candy based on its id */
       axios
         .request({
-          url: `${process.env.VUE_APP_BASE_DOMAIN}/api/candy`,
+          url: `/api/candy`,
           method: `DELETE`,
           data: {
             candy_id: candy[3],
@@ -54,7 +54,7 @@ export default {
   mounted() {
     axios
       .request({
-        url: `${process.env.VUE_APP_BASE_DOMAIN}/api/candy`,
+        url: `/api/candy`,
       })
       /* on success storing the response data in the candys empty array */
       .then((response) => {

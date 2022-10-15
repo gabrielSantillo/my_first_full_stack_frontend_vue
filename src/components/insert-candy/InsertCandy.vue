@@ -33,7 +33,7 @@ export default {
       }
       axios
         .request({
-          url: `${process.env.VUE_APP_BASE_DOMAIN}/api/candy`,
+          url: `/api/candy`,
           method: `POST`,
           /* data being sent */
           data: {
